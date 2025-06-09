@@ -20,9 +20,7 @@ awslocal lambda create-event-source-mapping \
     --function-name <your function name> \
     --event-source <resource ARN> \
     --batch-size 1 \
-    --profile mgmt-developer \
     <options>
-    --starting-position TRIM_HORIZON
 ```
 For example, if your function name was `my_lambda` and you wanted to consume from a Kinesis stream, you might run something like the following:
 ```
@@ -33,9 +31,12 @@ awslocal lambda create-event-source-mapping \
     --starting-position TRIM_HORIZON
 ```
 
+## Use with external services
+To enable communication with other services, ensure that the services are on the same network as the lambda handler or can otherwise communicate in some manner. An example of communication with an Opensearch node is provided in `compose.opensearch.yml` (note how the node and lambda handler are on the same network).
+
 ## Todos
-- Enable lambda handler container to communicate with external services
-- Hot reloading (unsure if this is possible)
+- Enable lambda handler container to communicate with external services (seems to involve DNS setup)
+- Hot reloading
 
 ## References:
 
