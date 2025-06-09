@@ -10,6 +10,8 @@ To run the lambda function (localstack):
 
 Note that for things to work properly, some changes may be needed to Docker network settings to ensure that the containers can communicate (i.e. issues with the network name were frequent - make sure the services are on the same network for the easiest setup).
 
+In order to use this setup with other services on Docker, make sure the corresponding contaniers are on the same network or can otherwise communicate with one another.
+
 References:
 - [https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function)
 - [https://docs.localstack.cloud/user-guide/aws/lambda/](https://docs.localstack.cloud/user-guide/aws/lambda/)
