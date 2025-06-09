@@ -14,7 +14,7 @@ In order to use this setup with other services on Docker, make sure the correspo
 
 ## Setup with event source mappings
 
-To create an event source mapping with Kinesis, run the following CLI command:
+To create an event source mapping for your function, run the following CLI command:
 ```
 awslocal lambda create-event-source-mapping \
     --function-name <your function name> \
