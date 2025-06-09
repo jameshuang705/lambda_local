@@ -9,6 +9,7 @@ provider "aws" {
   skip_credentials_validation = true
   skip_metadata_api_check     = true
   skip_requesting_account_id  = true
+  # note the endpoints are internal to within the docker network
   endpoints {
     lambda = "http://lambda-localstack:4566"
     iam = "http://lambda-localstack:4566"
