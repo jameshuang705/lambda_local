@@ -1,0 +1,29 @@
+services:
+  lambda-localstack:
+    container_name: lambda-localstack
+    image: localstack/localstack:3.4
+    hostname: lambda-localstack
+    ports:
+      - 30000:4566
+    environment:
+      services: iam, lambda
+      DEBUG: 1
+      DOCKER_HOST: unix://var/run/docker.sock
+      DEFAULT_REGION: us-west-2
+      LAMBDA_DOCKER_NETWORK: lambda_local_lambda
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - lambda
+  lambda-terraform:
+    container_name: lambda-terraform
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - lambda-localstack
+    networks:
+      - lambda
+networks:
+  lambda:
+    driver: bridge

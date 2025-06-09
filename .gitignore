@@ -1,0 +1,4 @@
+lambda/packages/*
+output.txt
+function.zip
+localstack
