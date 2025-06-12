@@ -49,7 +49,6 @@ awslocal lambda create-event-source-mapping \
 To enable communication with other services, ensure that the services are on the same network as the lambda handler or can otherwise communicate in some manner. An example of communication with an Opensearch node is provided in `compose.opensearch.yml` (note how the node and lambda handler are on the same network).
 
 ## Todos
-- Enable lambda handler container to communicate with external services (seems to involve DNS setup)
 - Hot reloading
 
 ## References:
