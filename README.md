@@ -1,5 +1,19 @@
 # AWS Local Lambda Development
 
+## Quickstart
+To get the lambda function running locally from this repo, do the following:
+
+1. Run `pip install opensearch-py -t lambda/packages` - this installs the Python OpenSearch client into the directory `lambda/packages`.
+2. Run `./build.sh` (`chmod +x build.sh` if it is not executable). This will build the zip archive and move it to the root directory.
+3. Run `docker compose up -d`. This will start up the Localstack container and create the resources needed for the lambda function. Make sure you are authenticated with AWS, etc. at this point (e.g. `aws sso login ...`).
+4. Run `docker compose -f compose.opensearch.yml up -d` to start up the OpenSearch service locally.
+5. Localstack will have port 30000 exposed to the host machine. Run `awslocal lambda invoke --function-name handler output.txt --endpoint http://localhost:30000` to trigger the Lambda function (the lambda name is "handler" by default).
+6. At this point, you should see a new Lambda function handler container be spun up by LocalStack.
+
+Note that you may need additional arguments for some commands. For example, for each of the `awslocal` commands, I need to include the argument `--profile`.
+
+## Dependencies
+
 To install dependencies into the lambda function:
 `pip install <package name> -t lambda/packages`
 
